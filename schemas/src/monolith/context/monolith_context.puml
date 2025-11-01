@@ -1,0 +1,15 @@
+@startuml SmartHomeContext
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(authUser, "Authorized User", "Авторизованный пользователь системы")
+System(smartHome, "SmartHome", "Система умного дома")
+Container(sensor_1, "Sensor 1", "Датчик 1")
+Container(sensor_2, "Sensor 2", "Датчик 2")
+Container(sensor_n, "Sensor ...n", "Датчик ...n")
+
+Rel(authUser, smartHome, "Включает/выключает отопление, просматривает температуру")
+Rel(smartHome, sensor_1, "запрашивает данные датчика 1")
+Rel(smartHome, sensor_2, "запрашивает данные датчика 2")
+Rel(smartHome, sensor_n, "запрашивает данные датчика ...n")
+@enduml
