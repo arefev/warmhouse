@@ -58,7 +58,7 @@
 
 **Диаграмма контейнеров (Containers)**
 
-Добавьте диаграмму.
+[Диаграмма контейнеров](https://github.com/arefev/warmhouse/blob/warmhouse/schemas/out/microservice/container/smarthome_container/SmartHomeContainer.png)
 
 **Диаграмма компонентов (Components)**
 
