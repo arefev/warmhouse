@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	address  string = "localhost:8081"
+	address  string = ":8081"
 	logLevel string = "info"
 )
 
