@@ -2,6 +2,7 @@
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
+
 AddElementTag("microService", $shape=EightSidedShape(), $bgColor="CornflowerBlue", $fontColor="white", $legendText="micro service\neight sided")
 AddElementTag("storage", $shape=RoundedBoxShape(), $bgColor="lightSkyBlue", $fontColor="white")
 
@@ -13,8 +14,8 @@ System_Boundary(smartHome, "SmartHome"){
     Container(webApp, "Web Application", "Go, ReactJS", "")
     Container(userService, "User service", "Go", "User management", $tags = "microService")
     Container(deviceService, "Device service", "Go", "Device management", $tags = "microService")
-    ContainerDb(appDB, "Application database", "PostgreSQL", "Stores info about users and their devices", $tags = "storage")
     Container(bus, "Device Message Bus", "RabbitMQ", "Transport events between application and devices")
+    !include ../commons.puml!appDB
 }
 
 Rel_D(authUser, webApp, "Uses", "HTTPS")

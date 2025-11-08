@@ -1,0 +1,5 @@
+@startuml(id=appDB)
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+AddElementTag("storage", $shape=RoundedBoxShape(), $bgColor="lightSkyBlue", $fontColor="white")
+ContainerDb(appDB, "Application database", "PostgreSQL", "Stores info about users and their devices", $tags = "storage")
+@enduml
