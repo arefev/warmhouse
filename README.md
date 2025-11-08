@@ -69,7 +69,9 @@
 
 **Диаграмма кода (Code)**
 
-Добавьте одну диаграмму или несколько.
+[Диаграмма кода - User Service API](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/code/smarthome_user_service_api_code/SmartHomeUserServiceAPICode.png)
+
+[Диаграмма кода - Device Service API](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/code/smarthome_device_service_api_code/SmartHomeDeviceServiceAPICode.png)
 
 # Задание 3. Разработка ER-диаграммы
 
