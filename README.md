@@ -51,7 +51,7 @@
 
 ### 5. Визуализация контекста системы — диаграмма С4
 
-[Диаграмма контекста](https://github.com/arefev/warmhouse/blob/warmhouse/schemas/out/monolith/context/monolith_context/SmartHomeContext.png)
+[Диаграмма контекста](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/context/smarthome_context/SmartHomeContext.png)
 
 # Задание 2. Проектирование микросервисной архитектуры
 
@@ -59,7 +59,7 @@
 
 **Диаграмма контейнеров (Containers)**
 
-[Диаграмма контейнеров](https://github.com/arefev/warmhouse/blob/warmhouse/schemas/out/microservice/container/smarthome_container/SmartHomeContainer.png)
+[Диаграмма контейнеров](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/container/smarthome_container/SmartHomeContainer.png)
 
 **Диаграмма компонентов (Components)**
 
