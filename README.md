@@ -63,7 +63,9 @@
 
 **Диаграмма компонентов (Components)**
 
-Добавьте диаграмму для каждого из выделенных микросервисов.
+[Диаграмма компонентов - User Service](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/component/smarthome_user_service_component/SmartHomeDeviceServiceComponent.png)
+
+[Диаграмма компонентов - Device Service](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/component/smarthome_device_service_component/SmartHomeDeviceServiceComponent.png)
 
 **Диаграмма кода (Code)**
 

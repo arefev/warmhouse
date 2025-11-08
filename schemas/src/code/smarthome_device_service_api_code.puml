@@ -1,0 +1,30 @@
+@startuml SmartHomeDeviceServiceAPICode
+
+package DeviceServiceAPI {
+    class HandlerAddDevice {
+        +add()
+    }
+
+    class HandlerDeleteDevice {
+        +delete()
+    }
+
+    class ServiceDevice{
+        +add()
+        +delete()
+        +get()
+    }
+
+    class RepositoryDevice {
+        +add()
+        +delete()
+        +get()
+    }
+
+    HandlerAddDevice --> ServiceDevice
+    HandlerDeleteDevice --> ServiceDevice
+    ServiceDevice --> RepositoryDevice
+}
+
+
+@enduml
