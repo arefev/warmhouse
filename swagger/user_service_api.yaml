@@ -1,0 +1,133 @@
+openapi: 3.0.4
+info:
+  title: Swagger SmartHome User Service - OpenAPI 3.0
+  version: 1.0.0
+servers:
+  - url: https://petstore3.swagger.io/api/v3
+tags:
+  - name: users
+    description: Действия с пользователями
+paths:
+  /users:
+    post:
+      tags:
+        - users
+      summary: Create user.
+      description: Create user.
+      operationId: userCreate
+      requestBody:
+        description: Create user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /users/{id}:
+    put:
+      tags:
+        - users
+      summary: "Update user by id"
+      description: "Update user by id"
+      operationId: "userUpdate"
+      parameters:
+        - name: id
+          in : path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    get:
+      tags:
+        - users
+      summary: "Get user by id"
+      description: "Get user by id"
+      operationId: "userGet"
+      parameters:
+        - name: id
+          in : path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - properties:
+                      id:
+                        type: integer
+                  - $ref: "#/components/schemas/user"
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    
+components:
+  schemas:
+    user:
+      required:
+        - login
+        - password
+      type: object
+      properties:
+        login:
+          type: string
+          example: "test_login"
+        password:
+          type: string
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
+  
