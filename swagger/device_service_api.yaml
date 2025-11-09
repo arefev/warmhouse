@@ -1,26 +1,33 @@
 openapi: 3.0.4
 info:
-  title: Swagger SmartHome User Service - OpenAPI 3.0
+  title: Swagger SmartHome Device Service - OpenAPI 3.0
   version: 1.0.0
 servers:
   - url: https://petstore3.swagger.io/api/v3
 tags:
-  - name: users
-    description: Действия с пользователями
+  - name: devices
+    description: Действия с устройствами
 paths:
-  /users:
+  /devices:
     post:
       tags:
-        - users
-      summary: Create user.
-      description: Create user.
-      operationId: userCreate
+        - devices
+      summary: Create device.
+      description: Create device.
+      operationId: deviceCreate
       requestBody:
-        description: Create user
+        description: Create device
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/user'
+              properties:
+                deviceTypeID:
+                  type: integer
+                houseID:
+                  type: integer
+                serialNumber:
+                  type: string
+                  example: "0001-2321-4124"
         required: true
       responses:
         '200':
@@ -35,13 +42,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-  /users/{id}:
+  /devices/{id}:
     put:
       tags:
-        - users
-      summary: "Update user by id"
-      description: "Update user by id"
-      operationId: "userUpdate"
+        - devices
+      summary: "Update device by id"
+      description: "Update device by id"
+      operationId: "deviceUpdate"
       parameters:
         - name: id
           in : path
@@ -49,11 +56,18 @@ paths:
           schema:
             type: integer
       requestBody:
-        description: Update user
+        description: Update device
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/user'
+              properties:
+                deviceTypeID:
+                  type: integer
+                houseID:
+                  type: integer
+                serialNumber:
+                  type: string
+                  example: "0001-2321-4124"
       responses:
         '200':
           description: Successful operation
@@ -69,10 +83,10 @@ paths:
                 $ref: "#/components/schemas/Error"
     get:
       tags:
-        - users
-      summary: "Get user by id"
-      description: "Get user by id"
-      operationId: "userGet"
+        - devices
+      summary: "Get device by id"
+      description: "Get device by id"
+      operationId: "deviceGet"
       parameters:
         - name: id
           in : path
@@ -89,7 +103,18 @@ paths:
                   - properties:
                       id:
                         type: integer
-                  - $ref: "#/components/schemas/user"
+                      deviceTypeID:
+                        type: integer
+                      houseID:
+                        type: integer
+                      serialNumber:
+                        type: string
+                        example: "0001-2321-4124"
+                      status:
+                        type: string
+                        enum:
+                          - enabled
+                          - disabled
         '400':
           description: Invalid input
         '422':
@@ -103,17 +128,6 @@ paths:
     
 components:
   schemas:
-    user:
-      required:
-        - login
-        - password
-      type: object
-      properties:
-        login:
-          type: string
-          example: "test_login"
-        password:
-          type: string
     ApiResponse:
       type: object
       properties:

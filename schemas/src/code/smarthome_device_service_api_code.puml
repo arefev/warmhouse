@@ -1,12 +1,10 @@
 @startuml SmartHomeDeviceServiceAPICode
 
 package DeviceServiceAPI {
-    class HandlerAddDevice {
+    class HandlerDevice {
         +add()
-    }
-
-    class HandlerDeleteDevice {
         +delete()
+        +get()
     }
 
     class ServiceDevice{
@@ -21,8 +19,7 @@ package DeviceServiceAPI {
         +get()
     }
 
-    HandlerAddDevice --> ServiceDevice
-    HandlerDeleteDevice --> ServiceDevice
+    HandlerDevice --> ServiceDevice
     ServiceDevice --> RepositoryDevice
 }
 
