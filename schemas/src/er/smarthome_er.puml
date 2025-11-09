@@ -28,7 +28,7 @@ entity device {
     device_type_id: bigint, unsigned, <FK>
     house_id: bigint, unsigned, <FK>
     serial_number: varchar
-    status: tinyint(1), unsigned
+    status: tinyint, unsigned
     created_at: datetime
     updated_at: datetime
 }
