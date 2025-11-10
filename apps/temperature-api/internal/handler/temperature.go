@@ -32,7 +32,7 @@ func NewTemperature(app *application.App) *temperature {
 
 func (t *temperature) Get(w http.ResponseWriter, r *http.Request) {
 	resp := TemperatureResponse{
-		Value: t.generate(),
+		Value:     t.generate(),
 		Timestamp: time.Now(),
 	}
 
@@ -46,8 +46,8 @@ func (t *temperature) Get(w http.ResponseWriter, r *http.Request) {
 
 func (t *temperature) GetByID(w http.ResponseWriter, r *http.Request) {
 	resp := TemperatureResponse{
-		SensorID: chi.URLParam(r, "sensorID"),
-		Value: t.generate(),
+		SensorID:  chi.URLParam(r, "sensorID"),
+		Value:     t.generate(),
 		Timestamp: time.Now(),
 	}
 
@@ -60,7 +60,7 @@ func (t *temperature) GetByID(w http.ResponseWriter, r *http.Request) {
 }
 
 func (t *temperature) generate() float64 {
-const max int = 50
+	const max int = 50
 	tmpr := rand.IntN(max)
 	if rand.IntN(2) > 0 {
 		tmpr *= -1
