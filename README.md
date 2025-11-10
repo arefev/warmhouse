@@ -51,7 +51,7 @@
 
 ### 5. Визуализация контекста системы — диаграмма С4
 
-[Диаграмма контекста](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/context/smarthome_context/SmartHomeContext.png)
+[Диаграмма контекста](./out/schemas/src/context/smarthome_context/SmartHomeContext.png)
 
 # Задание 2. Проектирование микросервисной архитектуры
 
@@ -59,23 +59,23 @@
 
 **Диаграмма контейнеров (Containers)**
 
-[Диаграмма контейнеров](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/container/smarthome_container/SmartHomeContainer.png)
+[Диаграмма контейнеров](./out/schemas/src/container/smarthome_container/SmartHomeContainer.png)
 
 **Диаграмма компонентов (Components)**
 
-[Диаграмма компонентов - User Service](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/component/smarthome_user_service_component/SmartHomeDeviceServiceComponent.png)
+[Диаграмма компонентов - User Service](./out/schemas/src/component/smarthome_user_service_component/SmartHomeDeviceServiceComponent.png)
 
-[Диаграмма компонентов - Device Service](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/component/smarthome_device_service_component/SmartHomeDeviceServiceComponent.png)
+[Диаграмма компонентов - Device Service](./out/schemas/src/component/smarthome_device_service_component/SmartHomeDeviceServiceComponent.png)
 
 **Диаграмма кода (Code)**
 
-[Диаграмма кода - User Service API](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/code/smarthome_user_service_api_code/SmartHomeUserServiceAPICode.png)
+[Диаграмма кода - User Service API](./out/schemas/src/code/smarthome_user_service_api_code/SmartHomeUserServiceAPICode.png)
 
-[Диаграмма кода - Device Service API](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/code/smarthome_device_service_api_code/SmartHomeDeviceServiceAPICode.png)
+[Диаграмма кода - Device Service API](./out/schemas/src/code/smarthome_device_service_api_code/SmartHomeDeviceServiceAPICode.png)
 
 # Задание 3. Разработка ER-диаграммы
 
-[ER диаграмма](https://github.com/arefev/warmhouse/blob/warmhouse/out/schemas/src/er/smarthome_er/SmartHomeER.png)
+[ER диаграмма](./out/schemas/src/er/smarthome_er/SmartHomeER.png)
 
 # Задание 4. Создание и документирование API
 
@@ -85,8 +85,9 @@
 
 ### 2. Документация API
 
-[User service API](https://github.com/arefev/warmhouse/blob/warmhouse/swagger/user_service_api.yaml)
-[Device service API](https://github.com/arefev/warmhouse/blob/warmhouse/swagger/device_service_api.yaml)
+[User service API](./swagger/user_service_api.yaml)
+
+[Device service API](./swagger/device_service_api.yaml)
 
 # Задание 5. Работа с docker и docker-compose
 
