@@ -1,0 +1,38 @@
+@startuml SmartHomeUserServiceAPICode
+
+package UserServiceAPI {
+    class HandlerCreateUser {
+        +login
+        +password
+        +create()
+    }
+
+    class HandlerGetUser {
+        +get()
+    }
+
+    class HandlerAuthorizeUser {
+        +login
+        +password
+        +authorize()
+    }
+
+    class RepositoryUser{
+        +create()
+        +get()
+    }
+
+    class ServiceUser{
+        +create()
+        +get()
+        +authorize()
+    }
+
+    HandlerCreateUser --> ServiceUser
+    HandlerGetUser --> ServiceUser
+    HandlerAuthorizeUser --> ServiceUser
+    ServiceUser --> RepositoryUser
+}
+
+
+@enduml

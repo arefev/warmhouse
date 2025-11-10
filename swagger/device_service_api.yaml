@@ -1,0 +1,153 @@
+openapi: 3.0.4
+info:
+  title: Swagger SmartHome Device Service - OpenAPI 3.0
+  version: 1.0.0
+servers:
+  - url: https://petstore3.swagger.io/api/v3
+tags:
+  - name: devices
+    description: Действия с устройствами
+paths:
+  /devices:
+    post:
+      tags:
+        - devices
+      summary: Create device.
+      description: Create device.
+      operationId: deviceCreate
+      requestBody:
+        description: Create device
+        content:
+          application/json:
+            schema:
+              properties:
+                deviceTypeID:
+                  type: integer
+                houseID:
+                  type: integer
+                serialNumber:
+                  type: string
+                  example: "0001-2321-4124"
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /devices/{id}:
+    put:
+      tags:
+        - devices
+      summary: "Update device by id"
+      description: "Update device by id"
+      operationId: "deviceUpdate"
+      parameters:
+        - name: id
+          in : path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update device
+        content:
+          application/json:
+            schema:
+              properties:
+                deviceTypeID:
+                  type: integer
+                houseID:
+                  type: integer
+                serialNumber:
+                  type: string
+                  example: "0001-2321-4124"
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    get:
+      tags:
+        - devices
+      summary: "Get device by id"
+      description: "Get device by id"
+      operationId: "deviceGet"
+      parameters:
+        - name: id
+          in : path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - properties:
+                      id:
+                        type: integer
+                      deviceTypeID:
+                        type: integer
+                      houseID:
+                        type: integer
+                      serialNumber:
+                        type: string
+                        example: "0001-2321-4124"
+                      status:
+                        type: string
+                        enum:
+                          - enabled
+                          - disabled
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    
+components:
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
+  

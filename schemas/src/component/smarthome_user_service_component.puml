@@ -1,0 +1,19 @@
+@startuml SmartHomeDeviceServiceComponent
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+!include ../commons.puml!appDB
+
+SHOW_PERSON_OUTLINE()
+
+Container(webApp, "Web Application", "Go, ReactJS", "")
+
+Container_Boundary(userService, "User Service"){
+    Component(api, "API", "Go", "Создает пользователя, запрос информации о пользователе")
+}
+
+Rel_D(webApp, api, "Uses", "HTTPS")
+Rel(api, appDB, "")
+
+
+SHOW_LEGEND()
+@enduml

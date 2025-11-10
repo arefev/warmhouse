@@ -1,0 +1,29 @@
+@startuml SmartHomeDeviceServiceComponent
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+!include ../commons.puml!appDB
+
+SHOW_PERSON_OUTLINE()
+
+Container(webApp, "Web Application", "Go, ReactJS", "")
+Container(bus, "Device Message Bus", "RabbitMQ", "Transport events between application and devices")
+
+Container_Boundary(deviceService, "Device Service"){
+    Component(api, "API", "Go", "Добавляет новые устройства, отправляет в очередь команды по устройствам")
+    Component(commandWorker, "Command worker", "Go", "Обрабатывает команды из очереди, отправляет команды на устройства")
+    Component(statusWorker, "Status worker", "Go", "Запрашивает статус устройства")
+}
+
+Rel_D(webApp, api, "Uses", "HTTPS")
+Rel(api, appDB, "")
+Rel(api, bus, "")
+Rel(commandWorker, bus, "")
+Rel(statusWorker, appDB, "")
+
+System_Ext(device_n, "Device N", "Устройство N")
+
+Rel(commandWorker, device_n, "отправляет команду на устройство")
+Rel(statusWorker, device_n, "запрашивает статус устройства")
+
+SHOW_LEGEND()
+@enduml

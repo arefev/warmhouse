@@ -1,0 +1,50 @@
+@startuml SmartHomeER
+
+entity user {
+    *id: bigint, unsigned, <PK>
+    login: varchar
+    password: varchar
+    created_at: datetime
+    updated_at: datetime
+}
+
+entity house {
+    *id: bigint, unsigned, <PK>
+    user_id: bigint, insigned, <FK>
+    name: varchar
+    created_at: datetime
+    updated_at: datetime
+}
+
+entity device_type {
+    *id: bigint, unsigned, <PK>
+    name: varchar
+    created_at: datetime
+    updated_at: datetime
+}
+
+entity device {
+    *id: bigint, unsigned, <PK>
+    device_type_id: bigint, unsigned, <FK>
+    house_id: bigint, unsigned, <FK>
+    serial_number: varchar
+    status: tinyint, unsigned
+    created_at: datetime
+    updated_at: datetime
+}
+
+entity telemetry_data {
+    *id: bigint, unsigned, <PK>
+    device_id: bigint, unsigned, <FK>
+    data: json
+    created_at: datetime
+    updated_at: datetime
+}
+
+
+user ||--o{ house : "id:user_id"
+house ||--o{ device : "id:house_id"
+device ||--|| device_type : "device_type_id:id"
+device ||--o{ telemetry_data : "id:device_id"
+
+@enduml
