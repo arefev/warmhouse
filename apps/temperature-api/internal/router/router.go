@@ -17,6 +17,7 @@ func New(app *application.App) *chi.Mux {
 	tmprHandler := handler.NewTemperature(app)
 
 	r.Get("/temperature", tmprHandler.Get)
+	r.Get("/temperature/{sensorID}", tmprHandler.GetByID)
 
 	return r
 }

@@ -7,6 +7,8 @@ import (
 	"time"
 
 	"temperature-api/internal/application"
+
+	"github.com/go-chi/chi/v5"
 )
 
 type temperature struct {
@@ -29,14 +31,8 @@ func NewTemperature(app *application.App) *temperature {
 }
 
 func (t *temperature) Get(w http.ResponseWriter, r *http.Request) {
-	const max int = 50
-	tmpr := rand.IntN(max)
-	if rand.IntN(2) > 0 {
-		tmpr *= -1
-	}
-
 	resp := TemperatureResponse{
-		Value: float64(tmpr),
+		Value: t.generate(),
 		Timestamp: time.Now(),
 	}
 
@@ -46,4 +42,29 @@ func (t *temperature) Get(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
+}
+
+func (t *temperature) GetByID(w http.ResponseWriter, r *http.Request) {
+	resp := TemperatureResponse{
+		SensorID: chi.URLParam(r, "sensorID"),
+		Value: t.generate(),
+		Timestamp: time.Now(),
+	}
+
+	if err := json.NewEncoder(w).Encode(resp); err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+}
+
+func (t *temperature) generate() float64 {
+const max int = 50
+	tmpr := rand.IntN(max)
+	if rand.IntN(2) > 0 {
+		tmpr *= -1
+	}
+
+	return float64(tmpr)
 }
